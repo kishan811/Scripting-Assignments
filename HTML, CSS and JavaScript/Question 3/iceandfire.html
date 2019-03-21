@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <h1 class="knockout">The Search of Ice and Fire! <br> (Game of Thrones)</h1>
+      <title>Game of Thrones!</title>
+    <style>
+.knockout{
+  color:  #FFA07A;
+  font-family: 'Droid serif', serif;
+  font-size: 45px;
+   font-weight: normal;
+   line-height: 48px;
+   text-align: center;
+   margin: 0;
+  }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+/*.pp{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0px solid #e7e7e7;
+    background-color: transparent;
+}*/
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #FFEFD5;
+}
+
+.active {
+    background-color: #7B68EE;
+}
+textarea {
+  height:auto;
+  /* max-width:300px; */
+  color:#999;
+  background:#fff;
+  border-radius:3px;
+  line-height:2em;
+  border:none;
+  box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
+  padding:7px;
+}
+
+body{
+	  background-image: url('/home/keshu/Documents/SCEassignment2/Question 3/pip.jpg');
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+* {box-sizing: border-box;}
+</style>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" type="text/css" src="mycss.css"> -->
+</head>
+<body>
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <a class="navbar-brand" href="#">My HTML Editor <span class="glyphicon glyphicon-pencil"></span></a>&nbsp; &nbsp; &nbsp; -->
+    </div>
+    <ul class="nav navbar-nav">
+      <!-- <li class="active"><a href="#">Run</a></li>
+      <li><a href="#">Clear Code area</a></li>
+      <li><a href="#">Clear Display Area</a></li> -->
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; 
+      <button class="btn btn-success navbar-btn" onClick="javascript:namechar();">Characters By Name</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-info navbar-btn" onClick="javascript:namehouse();">House By Name</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-danger navbar-btn" onClick="javascript:randomchar();">Random Character</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-info navbar-btn" onClick="javascript:randomhouse();">Random House</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-success navbar-btn" onClick="javascript:randomcharfromhouse();">Random character By House Name</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; 
+    </ul>
+    <!-- <button class="btn btn-danger navbar-btn">Button</button> -->
+  </div>
+</nav>
+
+<!-- <div class="text-center">
+  <textarea id="name" rows="2" cols="15"></textarea>
+  <button class="btn btn-danger navbar-btn" id="name"> </button>
+</div> -->
+<nav class="navbar">
+  <div class="container-fluid" style="float: right">
+    <div class="navbar-header">
+      <!-- <a class="navbar-brand" href="#">My HTML Editor <span class="glyphicon glyphicon-pencil"></span></a>&nbsp; &nbsp; &nbsp; -->
+    </div>
+    <ul class="pp">
+      <!-- <li class="active"><a href="#">Run</a></li>
+      <li><a href="#">Clear Code area</a></li>
+      <li><a href="#">Clear Display Area</a></li> -->
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <input id="yo" type="text" placeholder="Search Any Character" name="search" >
+      <button class="btn btn-primary navbar-btn" onClick="javascript:namechar();" type="submit">Character By Name</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+    </ul>
+    <!-- <button class="btn btn-danger navbar-btn">Button</button> -->
+  </div>
+</nav>
+
+
+<nav class="navbar">
+  <div class="container-fluid" style="float: right">
+    <div class="navbar-header">
+      <!-- <a class="navbar-brand" href="#">My HTML Editor <span class="glyphicon glyphicon-pencil"></span></a>&nbsp; &nbsp; &nbsp; -->
+    </div>
+    <ul class="pp">
+      <!-- <li class="active"><a href="#">Run</a></li>
+      <li><a href="#">Clear Code area</a></li>
+      <li><a href="#">Clear Display Area</a></li> -->
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <input id="yo1" type="text" placeholder="Search Any House" name="search">
+      <button class="btn btn-primary navbar-btn" onClick="javascript:namehouse();" type="submit">House By Name</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+    </ul>
+    <!-- <button class="btn btn-danger navbar-btn">Button</button> -->
+  </div>
+</nav>
+
+
+<nav class="navbar">
+  <div class="container-fluid" style="float: right">
+    <div class="navbar-header">
+      <!-- <a class="navbar-brand" href="#">My HTML Editor <span class="glyphicon glyphicon-pencil"></span></a>&nbsp; &nbsp; &nbsp; -->
+    </div>
+    <ul class="pp">
+      <!-- <li class="active"><a href="#">Run</a></li>
+      <li><a href="#">Clear Code area</a></li>
+      <li><a href="#">Clear Display Area</a></li> -->
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <input id="yo2" type="text" placeholder="Search House for character" name="search">
+      <button class="btn btn-primary navbar-btn" onClick="javascript:randomcharfromhouse();" type="submit">Random Character from House</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+    </ul>
+    <!-- <button class="btn btn-danger navbar-btn">Button</button> -->
+  </div>
+</nav>
+
+
+
+<div class="text-center">
+  <h2 id="myhead"></h2>
+  <!-- <button class="btn btn-danger navbar-btn" id="name"> </button> -->
+</div>
+<div class="text-center">
+  <h2 id="myhead1" style="color: #CD5C5C"></h2>
+  <!-- <button class="btn btn-danger navbar-btn" id="name"> </button> -->
+</div>
+<div class="text-center">
+  <h2 id="myhead2" style="color: #CD5C5C"></h2>
+  <!-- <button class="btn btn-danger navbar-btn" id="name"> </button> -->
+</div>
+<div class="text-center">
+  <h2 id="myhead3" style="color: #CD5C5C"></h2>
+  <!-- <button class="btn btn-danger navbar-btn" id="name"> </button> -->
+</div>
+<div class="text-center">
+  <h2 id="myhead4" style="color: #CD5C5C"></h2>
+  <!-- <button class="btn btn-danger navbar-btn" id="name"> </button> -->
+</div>
+   <!-- <button onClick="javascript:injectHTML();">Inject HTML</button> -->
+</body>
+<script language="javascript">
+var imageno=1;
+function namechar()
+{
+    var charURL = "https://anapioficeandfire.com/api/characters/?name=";
+    imageno=1;
+    // alert(url);
+    var char = document.getElementById('yo').value;
+    var url=charURL+char;
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.onload = function() {
+              var status = request.status;
+              if (status == 200)
+              {
+                // var source = JSON.parse(request.response).img;
+                var title=JSON.parse(request.response)[0].name;
+                 var gen=JSON.parse(request.response)[0].gender;
+                  var cul=JSON.parse(request.response)[0].culture;
+                  var birth=JSON.parse(request.response)[0].born;
+                if(title=="")
+                {
+                 title="Not Available in API";
+                }
+                if(gen=="")
+                {
+                 gen="Not Available in API";
+                }
+                if(cul=="")
+                {
+                 cul="Not Available in API";
+                }
+                if(birth=="")
+                {
+                birth="Not Available in API";
+                }
+                // console.log(JSON.parse(request.response)[0].name);
+                var x = document.getElementById("myhead1");
+                  var y = document.getElementById("myhead2");
+                  var z = document.getElementById("myhead3");
+                  var w = document.getElementById("myhead4");
+
+                x.innerText= "Member name: "+title;
+                y.innerText= "Gender:  "+gen;
+                z.innerText= "Culture: "+cul;
+                // w.innerText= "Birth: "+birth;
+                // document.getElementById('image').src=source;
+                // document.getElementById('name').value= title;
+              }
+              else
+              {
+              	  var p = document.getElementById("myhead1");
+              	  p.innerText="Error!"
+              }
+      };
+     request.send();
+}
+function namehouse()
+{
+    var houseURL = "https://anapioficeandfire.com/api/houses/?name=";
+    imageno=1;
+    // alert(url);
+    var house = document.getElementById('yo1').value;
+    var url=houseURL+house;
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.onload = function() {
+              var status = request.status;
+              if (status == 200)
+              {
+                // var source = JSON.parse(request.response).img;
+                var title=JSON.parse(request.response)[0].name;
+                 var gen=JSON.parse(request.response)[0].region;
+                  var cul=JSON.parse(request.response)[0].coatOfArms;
+                if(title=="")
+                {
+                 title="Not Available in API";
+                }
+                if(gen=="")
+                {
+                 gen="Not Available in API";
+                }
+                if(cul=="")
+                {
+                 cul="Not Available in API";
+                }
+                // console.log(JSON.parse(request.response)[0].name);
+                var x = document.getElementById("myhead1");
+                var y = document.getElementById("myhead2");
+                 var z = document.getElementById("myhead3");
+             	x.innerText= "House name: "+title;
+                y.innerText= "Region of House:  "+gen;
+                z.innerText= "Coat of Arms Achievement: "+cul;
+                // document.getElementById('image').src=source;
+                // document.getElementById('name').value= title;
+              }
+      };
+     request.send();
+}
+function randomhouse()
+{
+	var houseURL = "https://anapioficeandfire.com/api/houses/";
+    var rand = Math.floor((Math.random() * 444) + 1);
+    var url=houseURL+rand;
+   // var house = document.getElementById('yo').value;
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.onload = function() {
+              var status = request.status;
+              if (status == 200)
+              {
+                // var source = JSON.parse(request.response).img;
+                var title=JSON.parse(request.response).name;
+                 var gen=JSON.parse(request.response).region;
+                  var cul=JSON.parse(request.response).coatOfArms;
+                if(title=="")
+                {
+                 title="Not Available in API";
+                }
+                if(gen=="")
+                {
+                 gen="Not Available in API";
+                }
+                if(cul=="")
+                {
+                 cul="Not Available in API";
+                }
+                // console.log(JSON.parse(request.response)[0].name);
+                var x = document.getElementById("myhead1");
+                var y = document.getElementById("myhead2");
+                 var z = document.getElementById("myhead3");
+             	x.innerText= "House name: "+title;
+                y.innerText= "Region of House:  "+gen;
+                z.innerText= "Coat of Arms Achievement: "+cul;
+                // document.getElementById('image').src=source;
+                // document.getElementById('name').value= title;
+              }
+      };
+     request.send();
+}
+function randomchar()
+{
+   var charURL = "https://anapioficeandfire.com/api/characters/";
+    var rand = Math.floor((Math.random() * 2138) + 1);
+    var url=charURL+rand;
+   // var house = document.getElementById('yo').value;
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.onload = function() {
+              var status = request.status;
+              if (status == 200)
+              {
+                // var source = JSON.parse(request.response).img;
+                var title=JSON.parse(request.response).name;
+                // console.log(JSON.parse(request.response)[0].name);
+           		 var gen=JSON.parse(request.response).gender;
+                  var cul=JSON.parse(request.response).culture;
+                  var birth=JSON.parse(request.response).born;
+                if(title=="")
+                {
+                 title="Not Available in API";
+                }
+                if(gen=="")
+                {
+                 gen="Not Available in API";
+                }
+                if(cul=="")
+                {
+                 cul="Not Available in API";
+                }
+                if(birth=="")
+                {
+                birth="Not Available in API";
+                }
+                // console.log(JSON.parse(request.response)[0].name);
+                var x = document.getElementById("myhead1");
+                  var y = document.getElementById("myhead2");
+                  var z = document.getElementById("myhead3");
+                  var w = document.getElementById("myhead4");
+
+                x.innerText= "Member name: "+title;
+                y.innerText= "Gender:  "+gen;
+                z.innerText= "Culture: "+cul;
+                // w.innerText= "Birth: "+birth;
+                // document.getElementById('image').src=source;
+                // document.getElementById('name').value= title;
+              }
+
+      };
+     request.send();
+}
+function randomcharfromhouse()
+{
+	var houseURL = "https://anapioficeandfire.com/api/houses/?name=";
+    // var rand = Math.floor((Math.random() * 1123) + 1);
+   var house = document.getElementById('yo2').value;
+     var url=houseURL+house;
+     var y;
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.onload = function() {
+              var status = request.status;
+              if (status == 200)
+              {
+                // var source = JSON.parse(request.response).img;
+                y=JSON.parse(request.response)[0].swornMembers.length;
+                 var rand = Math.floor((Math.random() *y) + 1);
+                  y=JSON.parse(request.response)[0].swornMembers[rand];
+                // console.log(JSON.parse(request.response)[0].name);
+                // var x = document.getElementById("myhead1");
+                // x.innerText= title;
+                // document.getElementById('image').src=source;
+                // document.getElementById('name').value= title;
+                // alert(y);
+                secondf(y);
+              }
+      };
+     request.send();
+     // sleep(3000);
+     // alert(y);
+     
+
+}
+function secondf(y)
+{
+	 var request = new XMLHttpRequest();
+	 // alert("ma"+y);
+     request.open('GET',y);
+     request.onload = function() {
+              var status = request.status;
+              if (status == 200)
+              {
+                // var source = JSON.parse(request.response).img;
+               var yy=JSON.parse(request.response).name;
+               var gen=JSON.parse(request.response).gender;
+                var cul=JSON.parse(request.response).culture;
+                if(yy=="")
+                {
+                 title="Not Available in API";
+                }
+                if(gen=="")
+                {
+                 gen="Not Available in API";
+                }
+                if(cul=="")
+                {
+                 cul="Not Available in API";
+                }
+                // console.log(JSON.parse(request.response)[0].name);
+                var x = document.getElementById("myhead1");
+                  var pp = document.getElementById("myhead2"); 
+                   var z = document.getElementById("myhead3");               
+               // alert(yy);
+                 console.log(JSON.parse(request.response));
+                var x = document.getElementById("myhead1");
+                x.innerText="Character Name: "+yy;
+                pp.innerText= "Gender:  "+gen;
+                 z.innerText= "Culture: "+cul;
+                // document.getElementById('image').src=source;
+                // document.getElementById('name').value= title;
+              }
+      };
+     request.send();
+}
+</script>
+</html>

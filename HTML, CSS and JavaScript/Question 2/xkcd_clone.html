@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <h1 class="knockout">Fetching images from API! (Cloning XKCD comics) </h1>
+      <title>Fetching images from API!</title>
+    <style>
+.knockout{
+  color: #7c795d;
+  font-family: 'Droid serif', serif;
+  font-size: 45px;
+   font-weight: normal;
+   line-height: 48px;
+   text-align: center;
+   margin: 0;
+  }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #FFEFD5;
+}
+
+.active {
+    background-color: #7B68EE;
+}
+textarea {
+  height:auto;
+  /* max-width:300px; */
+  color:#999;
+  background:#fff;
+  border-radius:3px;
+  line-height:2em;
+  border:none;
+  box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
+  padding:7px;
+}
+}
+</style>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" type="text/css" src="mycss.css"> -->
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <a class="navbar-brand" href="#">My HTML Editor <span class="glyphicon glyphicon-pencil"></span></a>&nbsp; &nbsp; &nbsp; -->
+    </div>
+    <ul class="nav navbar-nav">
+      <!-- <li class="active"><a href="#">Run</a></li>
+      <li><a href="#">Clear Code area</a></li>
+      <li><a href="#">Clear Display Area</a></li> -->
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-success navbar-btn" onClick="javascript:firstimage();">|<</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-primary navbar-btn" onClick="javascript:prev_image();">< Previous</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-danger navbar-btn" onClick="javascript:random_img();">Random</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-primary navbar-btn" onClick="javascript:next_image();">Next ></button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-success navbar-btn" onClick="javascript:lastimage();">>|</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+    </ul>
+    <!-- <button class="btn btn-danger navbar-btn">Button</button> -->
+  </div>
+</nav>
+
+<!-- <div class="text-center">
+  <textarea id="name" rows="2" cols="15"></textarea>
+  <button class="btn btn-danger navbar-btn" id="name"> </button>
+</div> -->
+
+<div class="text-center">
+  <h2 id="myhead"></h2>
+  <!-- <button class="btn btn-danger navbar-btn" id="name"> </button> -->
+</div>
+
+<div class="text-center">
+  <img src="" class="img-rounded" alt="Image Can't be loaded!"  id="image">
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <a class="navbar-brand" href="#">My HTML Editor <span class="glyphicon glyphicon-pencil"></span></a>&nbsp; &nbsp; &nbsp; -->
+    </div>
+    <ul class="nav navbar-nav">
+      <!-- <li class="active"><a href="#">Run</a></li>
+      <li><a href="#">Clear Code area</a></li>
+      <li><a href="#">Clear Display Area</a></li> -->
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-success navbar-btn" onClick="javascript:firstimage();">|<</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-primary navbar-btn" onClick="javascript:prev_image();">< Previous</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-danger navbar-btn" onClick="javascript:random_img();">Random</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-primary navbar-btn" onClick="javascript:next_image();">Next ></button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="btn btn-success navbar-btn" onClick="javascript:lastimage();">>|</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+    </ul>
+    <!-- <button class="btn btn-danger navbar-btn">Button</button> -->
+  </div>
+</nav>
+
+   <!-- <button onClick="javascript:injectHTML();">Inject HTML</button> -->
+</body>
+<script language="javascript">
+var imageno=1;
+function firstimage()
+{
+    var url = "https://xkcd.com/1/info.0.json";
+    imageno=1;
+    // alert(url);
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.onload = function() {
+              var status = request.status;
+              if (status == 200)
+              {
+                var source = JSON.parse(request.response).img;
+                var title=JSON.parse(request.response).title;
+                var x = document.getElementById("myhead");
+                x.innerText= title;
+                document.getElementById('image').src=source;
+                document.getElementById('name').value= title;
+              }
+      };
+     request.send();
+}
+function prev_image()
+{
+    imageno=imageno-1;
+    if(imageno==0)
+    {
+       imageno=imageno+1;
+    }
+    var url="http://xkcd.com/"+imageno+"/info.0.json";
+    var request = new XMLHttpRequest();
+    request.open('GET',url);
+    request.onload = function() {
+              var status = request.status;
+              if (status == 200)
+              {
+                var source = JSON.parse(request.response).img;
+                var title=JSON.parse(request.response).title;
+                var x = document.getElementById("myhead");
+                x.innerText= title;
+                document.getElementById('image').src=source;
+                document.getElementById('name').value= title;
+              }
+      };
+     request.send();
+}
+function random_img()
+{
+    var rand = Math.floor((Math.random() * 1123) + 1);
+    imageno=rand;
+    var url="http://xkcd.com/"+ rand +"/info.0.json";
+    //alert(url);
+    var request = new XMLHttpRequest();
+    request.open('GET',url);
+    request.onload = function() {
+              var status = request.status;
+              if (status == 200)
+              {
+                var source = JSON.parse(request.response).img;
+                var title=JSON.parse(request.response).title;
+                var x = document.getElementById("myhead");
+                x.innerText= title;
+                document.getElementById('image').src=source;
+                document.getElementById('name').value= title;
+              }
+      };
+     request.send();
+}
+function next_image()
+{
+   if(imageno==2053)
+   {
+       imageno=2053;
+   }
+   else
+   {
+        imageno=imageno+1;
+   }
+   var url="http://xkcd.com/"+imageno+"/info.0.json";
+   var request = new XMLHttpRequest();
+   request.open('GET',url);
+   request.onload = function() {
+             var status = request.status;
+             if (status == 200)
+             {
+               var source = JSON.parse(request.response).img;
+               var title=JSON.parse(request.response).title;
+               var x = document.getElementById("myhead");
+               x.innerText= title;
+               document.getElementById('image').src=source;
+               document.getElementById('name').value= title;
+             }
+     };
+    request.send();
+}
+function lastimage()
+{
+    imageno=2053;
+    var url = "https://xkcd.com/info.0.json";
+    var request = new XMLHttpRequest();
+    request.open('GET',url);
+    request.onload = function() {
+              var status=request.status;
+              if (status==200)
+              {
+                 var source = JSON.parse(request.response).img;
+                 var title=JSON.parse(request.response).title;
+                 var x = document.getElementById("myhead");
+                 x.innerText= title;
+                 document.getElementById('image').src=source;
+                 document.getElementById('name').value= title;
+              }
+      };
+     request.send();
+}
+firstimage();
+</script>
+</html>

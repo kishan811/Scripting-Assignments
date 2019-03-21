@@ -1,0 +1,23 @@
+(dp0
+I4
+(lp1
+(i__main__
+Payment
+p2
+(dp3
+S'_Payment__CardType'
+p4
+S'23'
+p5
+sS'_Payment__id'
+p6
+I1
+sS'Name'
+p7
+S'Pen APsara'
+p8
+sS'_Payment__CardNo'
+p9
+S'56'
+p10
+sbas.

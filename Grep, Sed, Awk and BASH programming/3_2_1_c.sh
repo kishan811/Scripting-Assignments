@@ -1,0 +1,1 @@
+awk 'END{print S1,$2,$NF}'
